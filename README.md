@@ -1,99 +1,99 @@
-# Payload Cloudflare Template
+# Payload Cloudflare 템플릿
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1)
+[![Cloudflare에 배포하기](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1)
 
-This template comes configured with the bare minimum to get started on anything you need.
+이 템플릿은 필요한 모든 것을 시작하기 위한 최소한의 구성으로 제공됩니다.
 
-## Quick start
+## 빠른 시작
 
-This template can be deployed directly to Cloudflare Workers by clicking the button to take you to the setup screen.
+이 템플릿은 버튼을 클릭하여 설정 화면으로 이동하면 Cloudflare Workers에 직접 배포할 수 있습니다.
 
-From there you can connect your code to a git provider such Github or Gitlab, name your Workers, D1 Database and R2 Bucket as well as attach any additional environment variables or services you need.
+거기서 Github나 Gitlab 같은 git 공급자에 코드를 연결하고, Workers, D1 데이터베이스 및 R2 버킷의 이름을 지정하며, 필요한 추가 환경 변수나 서비스를 연결할 수 있습니다.
 
-## Quick Start - local setup
+## 빠른 시작 - 로컬 설정
 
-To spin up this template locally, follow these steps:
+이 템플릿을 로컬에서 실행하려면 다음 단계를 따르세요:
 
-### Clone
+### 클론
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. Cloudflare will connect your app to a git provider such as Github and you can access your code from there.
+위의 `Deploy` 버튼을 클릭한 후, 이 저장소의 독립적인 복사본을 컴퓨터에 가지고 싶을 것입니다. Cloudflare는 앱을 Github 같은 git 공급자에 연결하며, 거기서 코드에 접근할 수 있습니다.
 
-### Local Development
+### 로컬 개발
 
-## How it works
+## 작동 방식
 
-Out of the box, using [`Wrangler`](https://developers.cloudflare.com/workers/wrangler/) will automatically create local bindings for you to connect to the remote services and it can even create a local mock of the services you're using with Cloudflare.
+기본적으로 [`Wrangler`](https://developers.cloudflare.com/workers/wrangler/)를 사용하면 원격 서비스에 연결할 수 있는 로컬 바인딩이 자동으로 생성되며, Cloudflare에서 사용 중인 서비스의 로컬 모의 환경도 만들 수 있습니다.
 
-We've pre-configured Payload for you with the following:
+다음과 같이 Payload를 사전 구성했습니다:
 
-### Collections
+### 컬렉션
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+이 기능을 확장하는 방법에 대한 자세한 내용은 [컬렉션](https://payloadcms.com/docs/configuration/collections) 문서를 참조하세요.
 
-- #### Users (Authentication)
+- #### Users (인증)
 
-  Users are auth-enabled collections that have access to the admin panel.
+  Users는 관리자 패널에 접근할 수 있는 인증 지원 컬렉션입니다.
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+  추가 도움이 필요하면 공식 [Auth 예제](https://github.com/payloadcms/payload/tree/main/examples/auth) 또는 [인증](https://payloadcms.com/docs/authentication/overview#authentication-overview) 문서를 참조하세요.
 
 - #### Media
 
-  This is the uploads enabled collection.
+  업로드가 활성화된 컬렉션입니다.
 
-### Image Storage (R2)
+### 이미지 저장소 (R2)
 
-Images will be served from an R2 bucket which you can then further configure to use a CDN to serve for your frontend directly.
+이미지는 R2 버킷에서 제공되며, 이를 추가로 구성하여 프론트엔드에 직접 제공할 CDN을 사용할 수 있습니다.
 
-### D1 Database
+### D1 데이터베이스
 
-The Worker will have direct access to a D1 SQLite database which Wrangler can connect locally to, just note that you won't have a connection string as you would typically with other providers.
+Worker는 D1 SQLite 데이터베이스에 직접 접근할 수 있으며, Wrangler가 로컬에서 연결할 수 있습니다. 다른 공급자와 달리 일반적인 연결 문자열은 없다는 점에 유의하세요.
 
-## Working with Cloudflare
+## Cloudflare와 작업하기
 
-Firstly, after installing dependencies locally you need to authenticate with Wrangler by running:
+먼저, 로컬에서 종속성을 설치한 후 다음을 실행하여 Wrangler로 인증해야 합니다:
 
 ```bash
 pnpm wrangler login
 ```
 
-This will take you to Cloudflare to login and then you can use the Wrangler CLI locally for anything, use `pnpm wrangler help` to see all available options.
+이것은 로그인을 위해 Cloudflare로 이동하며, 그 후 모든 작업에 로컬에서 Wrangler CLI를 사용할 수 있습니다. 사용 가능한 모든 옵션을 보려면 `pnpm wrangler help`를 사용하세요.
 
-Wrangler is pretty smart so it will automatically bind your services for local development just by running `pnpm dev`.
+Wrangler는 매우 스마트하여 `pnpm dev`를 실행하는 것만으로 로컬 개발을 위한 서비스를 자동으로 바인딩합니다.
 
-## Deployments
+## 배포
 
-When you're ready to deploy, first make sure you have created your migrations:
+배포할 준비가 되면 먼저 마이그레이션을 생성했는지 확인하세요:
 
 ```bash
 pnpm payload migrate:create
 ```
 
-Then run the following command:
+그런 다음 다음 명령을 실행하세요:
 
 ```bash
 pnpm run deploy
 ```
 
-This will spin up Wrangler in `production` mode, run any created migrations, build the app and then deploy the bundle up to Cloudflare.
+이것은 `production` 모드에서 Wrangler를 시작하고, 생성된 모든 마이그레이션을 실행하며, 앱을 빌드한 다음 번들을 Cloudflare에 배포합니다.
 
-That's it! You can if you wish move these steps into your CI pipeline as well.
+완료되었습니다! 원하는 경우 이러한 단계를 CI 파이프라인으로 이동할 수도 있습니다.
 
-## Enabling logs
+## 로그 활성화
 
-By default logs are not enabled for your API, we've made this decision because it does run against your quota so we've left it opt-in. But you can easily enable logs in one click in the Cloudflare panel, [see docs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs).
+기본적으로 API에 대한 로그가 활성화되어 있지 않습니다. 할당량에 영향을 미치기 때문에 옵트인으로 남겨두었습니다. 그러나 Cloudflare 패널에서 한 번의 클릭으로 로그를 쉽게 활성화할 수 있습니다. [문서 참조](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs).
 
-## Known issues
+## 알려진 문제
 
 ### GraphQL
 
-We are currently waiting on some issues with GraphQL to be [fixed upstream in Workers](https://github.com/cloudflare/workerd/issues/5175) so full support for GraphQL is not currently guaranteed when deployed.
+현재 GraphQL의 일부 문제가 [Workers에서 업스트림으로 수정](https://github.com/cloudflare/workerd/issues/5175)되기를 기다리고 있으므로 배포 시 GraphQL에 대한 완전한 지원이 현재 보장되지 않습니다.
 
-### Worker size limits
+### Worker 크기 제한
 
-We currently recommend deploying this template to the Paid Workers plan due to bundle [size limits](https://developers.cloudflare.com/workers/platform/limits/#worker-size) of 3mb. We're actively trying to reduce our bundle footprint over time to better meet this metric.
+현재 3mb의 번들 [크기 제한](https://developers.cloudflare.com/workers/platform/limits/#worker-size) 때문에 이 템플릿을 유료 Workers 플랜에 배포하는 것을 권장합니다. 시간이 지남에 따라 이 메트릭을 더 잘 충족하기 위해 번들 크기를 적극적으로 줄이려고 노력하고 있습니다.
 
-This also applies to your own code, in the case of importing a lot of libraries you may find yourself limited by the bundle.
+이것은 자신의 코드에도 적용되며, 많은 라이브러리를 가져오는 경우 번들에 의해 제한될 수 있습니다.
 
-## Questions
+## 질문
 
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+문제나 질문이 있으면 [Discord](https://discord.com/invite/payload)로 연락하거나 [GitHub discussion](https://github.com/payloadcms/payload/discussions)을 시작하세요.
